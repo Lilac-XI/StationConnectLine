@@ -27,3 +27,9 @@ CSV.foreach("db/seeds/csv/TokyoStationInfo.csv",headers: true) do |row|
 	l.stations << s
 	l.save
 end
+
+Line.all.each do |line|
+	if line.stations.size == 0
+		line.destroy
+	end
+end
